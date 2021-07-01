@@ -13,6 +13,11 @@ namespace back_end_capstone.Repositories
     {
         public ChallengeRepository(IConfiguration config) : base(config) { }
 
+        public void AddChallenge(Challenge challenge)
+        {
+            throw new NotImplementedException();
+        }
+
         public Challenge GetByLevelId(int id)
         {
             using (var conn = Connection)
@@ -21,7 +26,7 @@ namespace back_end_capstone.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                          SELECT 
+                          SELECT [Name], levelId, attempts, description, urlLink
                             FROM Challenge
                            WHERE LevelId = @Id";
 
@@ -29,10 +34,10 @@ namespace back_end_capstone.Repositories
 
                     var reader = cmd.ExecuteReader();
 
-                    Category category = null;
+                    Challenge challenge = null;
                     if (reader.Read())
                     {
-                        category = new Category()
+                        challenge = new Challenge()
                         {
                             Id = id,
                             Name = DbUtils.GetString(reader, "Name"),
@@ -41,7 +46,7 @@ namespace back_end_capstone.Repositories
 
                     reader.Close();
 
-                    return category;
+                    return challenge;
                 }
             }
         }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace back_end_capstone.Controllers
 {
@@ -20,36 +20,17 @@ namespace back_end_capstone.Controllers
         {
             _challengeRepository = challengeRepository;
         }
-        // GET: api/<ChallengeController>
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return Ok(_challengeRepository;
-        }
-
+        
         // GET api/<ChallengeController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult GetByLevelId(int id)
         {
-            return "value";
-        }
-
-        // POST api/<ChallengeController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ChallengeController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ChallengeController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var challenge = _challengeRepository.GetByLevelId(id);
+            if (challenge == null)
+            {
+                return NotFound();
+            }
+            return Ok(challenge);
         }
     }
 }
