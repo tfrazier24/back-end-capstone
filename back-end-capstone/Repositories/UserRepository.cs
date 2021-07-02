@@ -20,7 +20,7 @@ namespace back_end_capstone.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT id, FirebaseUserId, email 
-                          FROM User
+                          FROM [User]
                          WHERE FirebaseUserId = @FirebaseuserId";
 
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", firebaseUserId);

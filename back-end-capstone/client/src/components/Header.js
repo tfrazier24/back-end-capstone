@@ -20,7 +20,7 @@ export default function Header() {
     <div>
       <Navbar color="dark" dark expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
-          Grace Hopper Wisdom
+          LunaM Golf School 
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

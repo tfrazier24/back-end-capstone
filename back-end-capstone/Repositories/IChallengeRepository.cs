@@ -2,9 +2,9 @@
 
 namespace back_end_capstone.Repositories
 {
-    internal interface IChallengeRepository
+    public interface IChallengeRepository
     {
-        void AddChallenge(Challenge challenge);
+  
         Challenge GetByLevelId(int id);
     }
 }
