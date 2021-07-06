@@ -5,7 +5,6 @@ import { UserProvider } from "./providers/UserProvider";
 import Header from "./components/Header";
 import ApplicationViews from "./ApplicationViews";
 import { ChallengeProvider } from "./providers/ChallengeProvider";
-import BeginnerPhase from "./components/BeginnerPhaseList";
 
 function App() {
   return (
@@ -13,7 +12,6 @@ function App() {
       <UserProvider>
         <ChallengeProvider>
           <Header />
-          <BeginnerPhase />
           <ApplicationViews />
         </ChallengeProvider>
       </UserProvider>

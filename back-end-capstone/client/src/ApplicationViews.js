@@ -6,6 +6,7 @@ import BeginnerPhase from "./components/BeginnerPhaseList";
 import WelcomeMessage from "./WelcomeMessage";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import AttemptForm from "./components/AttemptForm";
 
 
 export default function ApplicationViews() {
@@ -14,9 +15,9 @@ export default function ApplicationViews() {
   return (
     <main>
       <Switch>
-        <Route path="/" exact>
+        {/* <Route path="/" exact>
           {isLoggedIn ? <WelcomeMessage /> : <Redirect to="/login" />}
-        </Route>
+        </Route> */}
         <Route path="/" exact>
           {isLoggedIn ? <BeginnerPhase /> : <Redirect to="/login"/>}
         </Route>
@@ -27,6 +28,10 @@ export default function ApplicationViews() {
 
         <Route path="/register">
           <Register />
+        </Route>
+
+        <Route path="/challenge/attemptForm">
+          <AttemptForm />
         </Route>
       </Switch>
     </main>
