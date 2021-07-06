@@ -18,7 +18,7 @@ namespace back_end_capstone.Repositories
             throw new NotImplementedException();
         }
 
-        public Challenge GetByLevelId(int id)
+        public List<Challenge> GetByLevelId(int id)
         {
             using (var conn = Connection)
             {
@@ -34,19 +34,24 @@ namespace back_end_capstone.Repositories
 
                     var reader = cmd.ExecuteReader();
 
-                    Challenge challenge = null;
-                    if (reader.Read())
+                    List<Challenge> challenges = new List<Challenge>();
+                    while (reader.Read())
                     {
-                        challenge = new Challenge()
+                        Challenge challenge = new Challenge()
                         {
                             Id = id,
+                            LevelId = DbUtils.GetInt(reader, "LevelId"),
                             Name = DbUtils.GetString(reader, "Name"),
+                            Attempts = DbUtils.GetInt(reader, "Attempts"),
+                            Description = DbUtils.GetString(reader, "Description"),
+                            UrlLink = DbUtils.GetString(reader, "UrlLink")
                         };
+                        challenges.Add(challenge);
                     }
 
                     reader.Close();
 
-                    return challenge;
+                    return challenges;
                 }
             }
         }

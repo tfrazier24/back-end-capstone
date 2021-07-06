@@ -1,10 +1,12 @@
 ﻿using back_end_capstone.Models;
+using System.Collections.Generic;
 
 namespace back_end_capstone.Repositories
 {
-    internal interface IChallengeRepository
+    public interface IChallengeRepository
     {
-        void AddChallenge(Challenge challenge);
-        Challenge GetByLevelId(int id);
+  
+        //Challenge GetByLevelId(int id);
+        List<Challenge> GetByLevelId(int id);
     }
 }

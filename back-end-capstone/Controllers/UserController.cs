@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace back_end_capstone.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
